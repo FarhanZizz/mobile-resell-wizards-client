@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../Utilities/Button';
 
 const AdCard = () => {
@@ -11,7 +12,7 @@ const AdCard = () => {
                 <h2 className="card-title">Shoes!</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions">
-                    <Button>Buy now</Button>
+                    <Link to='/buy' className="border-0 btn btn-primary bg-[#D44040] font-semibold">buy now</Link>
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from './Layout/Main';
 import Home from './Pages/Home';
+import ErrorPage from './Pages/ErrorPage';
 
 function App() {
 
@@ -14,6 +15,10 @@ function App() {
         {
           path: '/',
           element: <Home></Home>
+        },
+        {
+          path: '*',
+          element: <ErrorPage></ErrorPage>
         }
       ]
     }
