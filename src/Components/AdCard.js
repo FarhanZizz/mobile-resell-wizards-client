@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../Utilities/Button';
 
 const AdCard = () => {
     return (
@@ -15,6 +14,9 @@ const AdCard = () => {
                     <Link to='/buy' className="border-0 btn btn-primary bg-[#D44040] font-semibold">buy now</Link>
                 </div>
             </div>
+
+
+
         </div>
     );
 };
