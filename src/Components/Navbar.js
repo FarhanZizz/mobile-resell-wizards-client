@@ -7,6 +7,7 @@ const Navbar = () => {
     const menuItems = <>
         <li><Link className='font-bold' to='/login'>Login</Link></li>
         <li><Link className='font-bold' to='/signup'>SignUp</Link></li>
+        <li><Link className='font-bold' to='/blog'>Blog</Link></li>
     </>
     return (
         <div className="bg-[url('/src/Assets/banner-bg.jpg')]">
