@@ -1,10 +1,10 @@
 import React from 'react';
-import img from '../Assets/whyus.webp'
+
 
 const WhyUs = () => {
     return (
         <div className='container mx-auto my-10'>
-            <h1 className="my-10 text-2xl font-semibold">Why Mobile Resell Wizards?</h1>
+            <h1 className="my-10 text-2xl font-semibold lg:text-left text-center">Why Mobile Resell Wizards?</h1>
             <div className='grid gird-cols-1 lg:grid-cols-3 md:grid-cols-2'>
                 <div className="card lg:card-side">
                     <figure><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#d44040" className="lg:w-1/2 w-1/4">
