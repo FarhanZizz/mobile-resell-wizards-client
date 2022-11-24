@@ -11,7 +11,7 @@ const AdCard = () => {
                 <h2 className="card-title">Shoes!</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions">
-                    <Link to='/buy' className="border-0 btn btn-primary bg-[#D44040] font-semibold">buy now</Link>
+                    <Link to='/buy' className="text-white border-0 btn btn-primary bg-[#D44040] font-semibold">buy now</Link>
                 </div>
             </div>
 

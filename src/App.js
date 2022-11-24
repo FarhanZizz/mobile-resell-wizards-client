@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import ErrorPage from './Pages/ErrorPage';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
+import Blog from './Pages/Blog';
 
 function App() {
 
@@ -24,6 +25,10 @@ function App() {
         {
           path: '/signup',
           element: <SignUp></SignUp>
+        },
+        {
+          path: '/blog',
+          element: <Blog></Blog>
         },
         {
           path: '*',

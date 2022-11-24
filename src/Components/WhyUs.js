@@ -54,7 +54,7 @@ const WhyUs = () => {
                     </figure>
                     <div className="card-body">
                         <p style={{ color: '#d44040' }} className='font-semibold'>Quick and Reliable</p>
-                        <p>We Offer Nect day pickup and deliver Service</p>
+                        <p>We Offer Next day pickup and deliver Service</p>
                     </div>
                 </div>
                 <div className="card lg:card-side">
