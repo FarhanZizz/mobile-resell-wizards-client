@@ -34,7 +34,7 @@ const Blog = () => {
                     </p>
                 </div>
                 <div>
-                    <h1 className='text-xl font-bold'>What is a unit test? Why should we write unit tests?</h1>
+                    <h1 className='text-xl font-bold'>React vs Angular vs Vue</h1>
                     <div className="divider w-3/4 m-0"></div>
                     <p>Angular, React, and Vue are all under very active development. They regularly release new versions and maintain the existing ones. As the current level of support is high in each case, you can safely use any of these frameworks.It's important to note that Angular is not growing as fast as before, while Vue — even though it started more recently — seems to be growing a lot. We can't predict which frameworks will remain relevant in the long term, but each project has a great community behind it and is constantly evolving.
                     </p>
