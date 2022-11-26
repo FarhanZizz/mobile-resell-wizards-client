@@ -7,6 +7,7 @@ import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import Blog from './Pages/Blog';
 import Products from './Pages/Products';
+import PrivateRoute from './Components/PrivateRoute';
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
           loader: ({ params }) => {
             return fetch(`http://localhost:5000/category/${params.id}`)
           },
-          element: <Products></Products>,
+          element: <PrivateRoute><Products></Products></PrivateRoute>,
         },
         {
           path: '*',
