@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
                 <p className='font-semibold'>Posted : {time}</p>
 
                 <div className="flex flex-row-reverse items-center justify-center">
-                    <button className="btn btn-primary font-semibold text-white text-muted">Buy Now</button>
+                    <button className="btn btn-primary border-0 font-semibold hover:bg-[#d44040] text-white text-muted">Buy Now</button>
                     <p className='text-xl font-bold text-primary'>Price : {Price}$</p>
                 </div>
             </div>

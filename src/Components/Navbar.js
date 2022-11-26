@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 
 const Navbar = () => {
 
+    const { user, logOut } = useContext(AuthContext)
+
+    const HandleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch((err) => { console.log(err) })
+    }
     const menuItems = <>
-        <li><Link className='font-bold' to='/login'>Login</Link></li>
-        <li><Link className='font-bold' to='/signup'>SignUp</Link></li>
         <li><Link className='font-bold' to='/blog'>Blog</Link></li>
+        {
+            user?.uid ? <>
+                <li><Link className='font-bold' to='/dashboard'>Dashboard</Link></li>
+                <li><button onClick={HandleLogOut} className='font-bold'>Logout</button></li>
+            </>
+                :
+                <>
+                    <li><Link className='font-bold' to='/login'>Login</Link></li>
+                    <li><Link className='font-bold' to='/signup'>SignUp</Link></li>
+                </>
+        }
     </>
     return (
         <div className="bg-[url('/src/Assets/banner-bg.jpg')]">
