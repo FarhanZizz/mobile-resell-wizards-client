@@ -8,6 +8,8 @@ import SignUp from './Pages/SignUp';
 import Blog from './Pages/Blog';
 import Products from './Pages/Products';
 import PrivateRoute from './Components/PrivateRoute';
+import Dashboard from './Pages/Dashboard';
+import MyOrders from './Pages/MyOrders';
 
 function App() {
 
@@ -38,6 +40,20 @@ function App() {
             return fetch(`http://localhost:5000/category/${params.id}`)
           },
           element: <PrivateRoute><Products></Products></PrivateRoute>,
+        },
+        {
+          path: '/dashboard',
+          element: <Dashboard></Dashboard>,
+          children: [
+            {
+              path: '/dashboard',
+              element: <MyOrders></MyOrders>
+            },
+            {
+              path: '/dashboard/sellers',
+              element: <MyOrders></MyOrders>
+            }
+          ]
         },
         {
           path: '*',

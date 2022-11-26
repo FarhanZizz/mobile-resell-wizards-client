@@ -66,7 +66,7 @@ const Login = () => {
         <div className="card bg-base-100 shadow-xl my-20 lg:w-2/5 w-5/6 mx-auto">
             <div className="items-center text-center p-10">
                 <h1 className="mb-5 text-3xl font-semibold">Login To Your Account!</h1>
-                <button onClick={HandleGoogleSignIn} className="btn btn-primary text-white hover:bg-[#d44040] w-3/4 mx-auto my-4"><BsGoogle className='mr-2'></BsGoogle>SignUp With Google</button>
+                <button onClick={HandleGoogleSignIn} className="btn btn-primary text-white hover:bg-[#d44040] w-3/4 mx-auto my-4"><BsGoogle className='mr-2'></BsGoogle>Log in With Google</button>
                 <div className="divider">OR</div>
                 <form onSubmit={handleLoginSubmit}>
                     <div className="form-control">
