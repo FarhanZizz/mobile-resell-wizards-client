@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
+import { BsGoogle } from 'react-icons/bs';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Login = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
-    const { login } = useContext(AuthContext);
+    const { login, googleLogin } = useContext(AuthContext);
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
 
@@ -28,10 +29,45 @@ const Login = () => {
                 setError(errorMessage)
             })
     }
+    const HandleGoogleSignIn = () => {
+        googleLogin()
+            .then((result) => {
+                const user = result.user;
+                const newUser = {
+                    email: user.email,
+                    name: user.displayName,
+                    type: "buyer",
+                }
+                userDB(newUser)
+                setError('');
+                navigate(from, { replace: true })
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setError(errorMessage)
+            })
+    }
+
+
+    const userDB = (user) => {
+
+        fetch(`http://localhost:5000/users`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+
+    }
     return (
         <div className="card bg-base-100 shadow-xl my-20 lg:w-2/5 w-5/6 mx-auto">
             <div className="items-center text-center p-10">
                 <h1 className="mb-5 text-3xl font-semibold">Login To Your Account!</h1>
+                <button onClick={HandleGoogleSignIn} className="btn btn-primary text-white hover:bg-[#d44040] w-3/4 mx-auto my-4"><BsGoogle className='mr-2'></BsGoogle>SignUp With Google</button>
+                <div className="divider">OR</div>
                 <form onSubmit={handleLoginSubmit}>
                     <div className="form-control">
                         <label className="label">
