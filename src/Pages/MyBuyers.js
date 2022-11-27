@@ -3,7 +3,7 @@ import React from 'react';
 const MyBuyers = () => {
     return (
         <div>
-            My Buyers
+            <p className='text-center font-bold text-primary text-2xl mt-40'>Coming Soon</p>
         </div>
     );
 };

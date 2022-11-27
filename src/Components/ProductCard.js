@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, setProductDetails }) => {
 
     const { name, img, used, seller, orginal_price, time, Price, location } = product;
     return (
@@ -15,7 +15,8 @@ const ProductCard = ({ product }) => {
                 <p className='font-semibold'>Posted : {time}</p>
 
                 <div className="flex flex-row-reverse items-center justify-center">
-                    <button className="btn btn-primary border-0 font-semibold hover:bg-[#d44040] text-white text-muted">Buy Now</button>
+                    <label onClick={() => { setProductDetails(product) }} htmlFor="booking-modal" className="btn btn-primary border-0 font-semibold hover:bg-[#d44040] text-white text-muted">Book Now</label>
+
                     <p className='text-xl font-bold text-primary'>Price : {Price}$</p>
                 </div>
             </div>
