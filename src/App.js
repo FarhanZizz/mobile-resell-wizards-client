@@ -9,7 +9,11 @@ import Blog from './Pages/Blog';
 import Products from './Pages/Products';
 import PrivateRoute from './Components/PrivateRoute';
 import Dashboard from './Pages/Dashboard';
-import MyOrders from './Pages/MyOrders';
+import MyProducts from './Pages/MyProducts';
+import MyBuyers from './Pages/MyBuyers';
+import AllBuyers from './Pages/AllBuyers';
+import ReportedItems from './Pages/ReportedItems';
+import DashboardDefault from './Pages/DashboardDefault';
 
 function App() {
 
@@ -43,16 +47,28 @@ function App() {
         },
         {
           path: '/dashboard',
-          element: <Dashboard></Dashboard>,
+          element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
           children: [
             {
               path: '/dashboard',
-              element: <MyOrders></MyOrders>
+              element: <DashboardDefault></DashboardDefault>
             },
             {
-              path: '/dashboard/sellers',
-              element: <MyOrders></MyOrders>
-            }
+              path: '/dashboard/myproducts',
+              element: <MyProducts></MyProducts>
+            },
+            {
+              path: '/dashboard/mybuyers',
+              element: <MyBuyers></MyBuyers>
+            },
+            {
+              path: '/dashboard/buyers',
+              element: <AllBuyers></AllBuyers>
+            },
+            {
+              path: '/dashboard/reporteditems',
+              element: <ReportedItems></ReportedItems>
+            },
           ]
         },
         {
