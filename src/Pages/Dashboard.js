@@ -37,7 +37,7 @@ const Dashboard = () => {
     return (
         <div className="drawer drawer-mobile">
             <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content bg-base-200 grid grid-cols-1  items-center justify-center">
+            <div className="drawer-content bg-base-200">
                 <Outlet></Outlet>
             </div>
             <div className="drawer-side">

@@ -1,9 +1,11 @@
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const AddProduct = () => {
+    const navigate = useNavigate();
 
     const { user } = useContext(AuthContext)
     const handleAddProduct = event => {
@@ -19,6 +21,7 @@ const AddProduct = () => {
         const location = form.location.value;
         const seller_email = user.email;
         const time = format(new Date(), 'p');
+        const status = "Available";
 
         const product = {
             category,
@@ -31,6 +34,7 @@ const AddProduct = () => {
             name,
             location,
             seller_email,
+            status
         }
         fetch('http://localhost:5000/products', {
             method: 'POST',
@@ -44,7 +48,8 @@ const AddProduct = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     form.reset()
-                    toast.success('Booking confirmed');
+                    toast.success('Product Successfully added')
+                    navigate('/dashboard/myproducts');
                 }
                 else {
                     toast.error(data.message);
@@ -54,7 +59,7 @@ const AddProduct = () => {
 
     return (
         <div className='lg:w-1/2 w-2/3 mx-auto my-10'>
-            <h1 className="mb-5 text-xl font-semibold text-center">Book This Product Right Now!</h1>
+            <h1 className="mb-5 text-xl font-semibold text-center">Add a Product!</h1>
             <form onSubmit={handleAddProduct}>
                 <label className="label">
                     <span className="label-text">Select Your Product Brand</span>
