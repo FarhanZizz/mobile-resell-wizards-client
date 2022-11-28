@@ -9,6 +9,8 @@ const Dashboard = () => {
             .then(res => res.json())
             .then(data => setUserData(data))
     }, [user])
+
+
     const menuItems = <>
         {
             userData[0]?.type === "buyer" && <li className='items-center'><Link className='font-semibold' to='/dashboard'>My Orders</Link></li>

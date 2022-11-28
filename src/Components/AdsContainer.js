@@ -1,16 +1,21 @@
-import React from 'react';
-import AdCard from './AdCard';
+import React, { useState } from 'react';
+import BookingModal from './BookingModal';
+import ProductCard from './ProductCard';
 
-const AdsContainer = () => {
+const AdsContainer = ({ products }) => {
+
+    const [productDetails, setProductDetails] = useState(null)
     return (
-        <div className='my-20'>
-            <h1 className="my-10 text-center text-2xl font-semibold">Advertised Products!</h1>
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 gird-cols-1'>
-                <AdCard></AdCard>
-                <AdCard></AdCard>
-                <AdCard></AdCard>
-            </div>
-        </div>
+        <div className='w-2/3 mx-auto grid grid-cols-1 gap-y-8 my-10' >
+            <h1 className="mb-5 text-2xl font-semibold text-center">Advertised Products!</h1>
+            {
+                products.map(product => <ProductCard key={product._id} setProductDetails={setProductDetails} product={product}></ProductCard>)
+            }
+            {
+                productDetails && <BookingModal setProductDetails={setProductDetails} productDetails={productDetails}></BookingModal>
+            }
+        </div >
+
     );
 };
 

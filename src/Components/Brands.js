@@ -6,7 +6,7 @@ import google from '../Assets/google_icon.png'
 
 const Brands = () => {
     return (
-        <div className='my-28'>
+        <div>
             <h1 className="my-10 text-2xl font-semibold text-center">Brands We Deal</h1>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-20">
                 <Link to='/category/1'><img className='lg:w-1/2 w-1/3 mx-auto' src={apple} alt="" /></Link>
