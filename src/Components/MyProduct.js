@@ -14,8 +14,18 @@ const MyProduct = ({ myProduct, refetch }) => {
                     toast.success('Deleted Successfully')
                 }
             })
-
-
+    }
+    const handleAdvertise = () => {
+        fetch(`http://localhost:5000/product/advertise/${_id}`, { method: 'PATCH' })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount === 1) {
+                    toast.success('Advertised Successfully')
+                }
+                else {
+                    toast.error('Product is already Advertised')
+                }
+            })
     }
     return (
         <div className="card lg:card-side bg-base-100 shadow-lg">
@@ -27,7 +37,7 @@ const MyProduct = ({ myProduct, refetch }) => {
 
                 <div className="flex flex-col-reverse lg:flex-row-reverse items-center justify-center">
                     <div className='flex items-center'>
-                        <button className="btn mx-1 btn-primary border-0 font-semibold text-white">Advertise</button>
+                        <button onClick={handleAdvertise} className="btn mx-1 btn-primary border-0 font-semibold text-white">Advertise</button>
                         <button onClick={handleDelete} className="btn btn-error border-0 font-semibold text-white"><BsFillTrashFill></BsFillTrashFill></button>
                     </div>
 
