@@ -42,7 +42,7 @@ function App() {
         {
           path: '/category/:id',
           loader: ({ params }) => {
-            return fetch(`http://localhost:5000/category/${params.id}`)
+            return fetch(`https://mobile-resell-wizards-server.vercel.app/category/${params.id}`)
           },
           element: <PrivateRoute><Products></Products></PrivateRoute>,
         },
@@ -54,6 +54,7 @@ function App() {
               path: '/dashboard',
               element: <DashboardDefault></DashboardDefault>
             },
+
             {
               path: '/dashboard/myproducts',
               element: <MyProducts></MyProducts>

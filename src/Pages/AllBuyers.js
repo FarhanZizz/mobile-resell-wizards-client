@@ -2,18 +2,22 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { BsFillTrashFill } from 'react-icons/bs';
+import Loading from './Loading';
 
 const AllBuyers = () => {
-    const { data: buyers = [], refetch } = useQuery({
+    const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/buyers`);
+            const res = await fetch(`https://mobile-resell-wizards-server.vercel.app/buyers`);
             const data = await res.json();
             return data
         }
     });
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/user/delete/${id}`, { method: 'DELETE' })
+        fetch(`https://mobile-resell-wizards-server.vercel.app/user/delete/${id}`, { method: 'DELETE' })
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount === 1) {

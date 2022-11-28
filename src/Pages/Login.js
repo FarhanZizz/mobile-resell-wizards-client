@@ -51,7 +51,7 @@ const Login = () => {
 
     const userDB = (user) => {
 
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://mobile-resell-wizards-server.vercel.app/users`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

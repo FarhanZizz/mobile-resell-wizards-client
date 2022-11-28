@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import axios from 'axios'
 
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
@@ -10,37 +11,44 @@ const BookingModal = ({ productDetails, setProductDetails }) => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const img = form.img.value;
         const email = form.email.value;
         const product = form.product.value;
         const price = form.price.value;
         const phone = form.phone.value;
         const location = form.location.value;
-        const booking = {
-            email,
-            name,
-            product,
-            price,
-            phone,
-            location,
-        }
-        fetch('http://localhost:5000/bookings', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(booking)
+        axios({
+            method: 'post',
+            url: 'https://mobile-resell-wizards-server.vercel.app/bookings',
+            data: {
+                email,
+                name,
+                img,
+                product,
+                price,
+                phone,
+                location,
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.acknowledged) {
+            .then(function (response) {
+                console.log(response.data);
+                if (response.data.acknowledged) {
                     setProductDetails(null);
                     toast.success('Booking confirmed');
                 }
                 else {
-                    toast.error(data.message);
+                    toast.error(response.data.message);
                 }
             })
+
+        axios({
+            method: 'post',
+            url: 'https://mobile-resell-wizards-server.vercel.app/bookings',
+            data: {
+                firstName: 'Fred',
+                lastName: 'Flintstone'
+            }
+        });
 
 
     }
@@ -69,6 +77,12 @@ const BookingModal = ({ productDetails, setProductDetails }) => {
                                 <span className="label-text">Product Name</span>
                             </label>
                             <input type="text" name="product" placeholder="Product Name" className="input input-bordered" disabled defaultValue={productDetails.name} required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Image URL</span>
+                            </label>
+                            <input type="text" name="img" placeholder="Product Name" className="input input-bordered" disabled defaultValue={productDetails.img} required />
                         </div>
                         <div className="form-control">
                             <label className="label">

@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const AddProduct = () => {
@@ -36,7 +36,7 @@ const AddProduct = () => {
             seller_email,
             status
         }
-        fetch('http://localhost:5000/products', {
+        fetch('https://mobile-resell-wizards-server.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

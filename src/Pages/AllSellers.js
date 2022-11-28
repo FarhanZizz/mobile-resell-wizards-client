@@ -2,18 +2,23 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { BsFillTrashFill } from 'react-icons/bs';
+import Loading from './Loading';
 
 const AllSellers = () => {
-    const { data: sellers = [], refetch } = useQuery({
+
+    const { data: sellers = [], refetch, isLoading } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/sellers`);
+            const res = await fetch(`https://mobile-resell-wizards-server.vercel.app/sellers`);
             const data = await res.json();
             return data
         }
     });
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/user/delete/${id}`, { method: 'DELETE' })
+        fetch(`https://mobile-resell-wizards-server.vercel.app/user/delete/${id}`, { method: 'DELETE' })
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount === 1) {
@@ -22,9 +27,21 @@ const AllSellers = () => {
                 }
             })
     }
+    const handleVerify = (email) => {
+        fetch(`https://mobile-resell-wizards-server.vercel.app/seller/verify?email=${email}`, { method: 'PATCH' })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    toast.success('Seller Verified Successfully')
+                }
+                else {
+                    toast.error('seller is alredy verified')
+                }
+            })
+    }
     return (
         <div className="overflow-x-auto rounded">
-            <h1 className="my-5 text-xl font-bold text-center">All Buyers</h1>
+            <h1 className="my-5 text-xl font-bold text-center">All Sellers</h1>
             <table className="table w-full">
                 <thead>
                     <tr>
@@ -40,7 +57,12 @@ const AllSellers = () => {
                             <th>{i + 1}</th>
                             <td>{seller.name}</td>
                             <td>{seller.email}</td>
-                            <td><button onClick={() => handleDelete(seller._id)} className="btn btn-error border-0 font-semibold text-white"><BsFillTrashFill></BsFillTrashFill></button></td>
+                            <td>
+                                <div className="flex">
+                                    <button onClick={() => handleVerify(seller.email)} className="btn btn-primary border-0 font-semibold text-white mx-1">Verify Seller</button>
+                                    <button onClick={() => handleDelete(seller._id)} className="btn btn-error border-0 font-semibold text-white"><BsFillTrashFill></BsFillTrashFill></button>
+                                </div>
+                            </td>
                         </tr>
 
                     )}
