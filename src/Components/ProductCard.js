@@ -33,9 +33,9 @@ const ProductCard = ({ product, setProductDetails }) => {
                 <p className='font-semibold'>Posted : {time}</p>
 
                 <div className="flex flex-col-reverse lg:flex-row-reverse items-center justify-center">
-                    <div className="flex items-center">
+                    <div className="flex flex-col lg:flex-row items-center">
                         <label onClick={() => { setProductDetails(product) }} htmlFor="booking-modal" className="btn btn-primary border-0 font-semibold hover:bg-[#d44040] text-white text-muted">Book Now</label>
-                        {user?.email && <button onClick={() => handleReport(_id)} className="btn mx-1 btn-success border-0 font-semibold text-white">Report to admin</button>}
+                        {user?.email && <button onClick={() => handleReport(_id)} className="btn mx-1 btn-success border-0 font-semibold text-white my-2">Report to admin</button>}
                     </div>
 
                     <p className='text-xl my-2 font-bold text-primary'>Price : {Price}$</p>
