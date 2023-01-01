@@ -15,6 +15,9 @@ This site was built using the following technologies:
 - [React Icons](https://react-icons.netlify.com/) for adding icons to the site
 - [date-fns](https://date-fns.org/) for working with dates in JavaScript
 
+### Server - https://mobile-resell-wizards-server.vercel.app
+### Server Code - https://github.com/FarhanZizz/mobile-resell-wizards-server
+
 I hope you enjoy using the site! If you have any questions or feedback, please don't hesitate to reach out.
 
 Thank You!
