@@ -6,7 +6,7 @@ This site was built using the following technologies:
 - [React Router](https://reactrouter.com/) for handling client-side routing
 - [React Query](https://github.com/tannerlinsley/react-query) for fetching and caching data
 - [Axios](https://github.com/axios/axios) for making HTTP requests
-- [Firebase](https://firebase.google.com/) for storing and syncing data in real-time
+- [Firebase](https://firebase.google.com/) for secure authentication system and Hosting
 - [Express.js](https://expressjs.com/) for building the backend API
 - [MongoDB](https://www.mongodb.com/) for storing data
 - [Tailwind CSS](https://tailwindcss.com/) for styling the site
