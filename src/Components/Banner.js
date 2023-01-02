@@ -1,6 +1,5 @@
 import React from 'react';
 import bannerImg from '../Assets/banner-img.png'
-import Button from '../Utilities/Button';
 const Banner = () => {
     return (
         <section className="hero  mx-auto text-white bg-[url('/src/Assets/banner-bg.jpg')]">
@@ -10,7 +9,7 @@ const Banner = () => {
                     <h1 className="text-5xl leading-tight font-bold">The Largest Mobile Resell Marketplace in Bangladesh!</h1>
                     <p className="py-6">Sell Your Old Android/iOS Phone at <span className='font-bold'>MRW</span> & Get the Best Services, Quote & Free Pickup. Unlock the Best Market Price for Your Phone Now!</p>
 
-                    <Button>Get Started</Button>
+                    <a href='#brands' className='text-white border-0 btn btn-primary bg-[#D44040] font-semibold'>Get Started</a>
                 </div>
             </div>
         </section>
