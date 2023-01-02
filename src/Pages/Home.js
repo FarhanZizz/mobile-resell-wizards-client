@@ -3,6 +3,7 @@ import React from 'react';
 import AdsContainer from '../Components/AdsContainer';
 import Banner from '../Components/Banner';
 import Brands from '../Components/Brands';
+import Navbar from '../Components/Navbar';
 import NewsLetter from '../Components/NewsLetter';
 import WhyUs from '../Components/WhyUs';
 import Loading from './Loading';
@@ -23,6 +24,7 @@ const Home = () => {
     }
     return (
         <div>
+            <Navbar></Navbar>
             <Banner></Banner>
             {products.length && <AdsContainer products={products}></AdsContainer>}
             <Brands></Brands>

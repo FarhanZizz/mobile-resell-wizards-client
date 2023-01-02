@@ -2,7 +2,7 @@ import React from 'react';
 import bannerImg from '../Assets/banner-img.png'
 const Banner = () => {
     return (
-        <section className="hero  mx-auto text-white bg-[url('/src/Assets/banner-bg.jpg')]">
+        <section className="hero  mx-auto text-white bg-[url('/src/Assets/banner-bg.jpg')] pt-20 -mt-20">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <img className="lg:w-1/2 rounded-lg" src={bannerImg} alt="" />
                 <div>
