@@ -7,7 +7,7 @@ import Navbar from '../Components/Navbar';
 import NewsLetter from '../Components/NewsLetter';
 import WhyUs from '../Components/WhyUs';
 import Loading from './Loading';
-
+import Footer from '../Components/Footer'
 
 
 const Home = () => {
@@ -30,6 +30,7 @@ const Home = () => {
             <Brands></Brands>
             <WhyUs></WhyUs>
             <NewsLetter></NewsLetter>
+            <Footer></Footer>
         </div>
     );
 };
