@@ -8,6 +8,7 @@ This site was built using the following technologies:
 - [Axios](https://github.com/axios/axios) for making HTTP requests
 - [Firebase](https://firebase.google.com/) for secure authentication system and Hosting
 - [Express.js](https://expressjs.com/) for building the backend API
+- [JsonWebToken](https://github.com/auth0/node-jsonwebtoken) for API data encryption
 - [MongoDB](https://www.mongodb.com/) for storing data
 - [Tailwind CSS](https://tailwindcss.com/) for styling the site
 - [DaisyUI](https://daisyui.com/) for additional UI components
