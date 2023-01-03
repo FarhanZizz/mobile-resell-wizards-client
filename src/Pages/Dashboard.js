@@ -1,23 +1,28 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import Loading from './Loading';
 const Dashboard = () => {
-    const { user } = useContext(AuthContext);
-
     const { data: userData = [], isLoading } = useQuery({
         queryKey: ['userData'],
         queryFn: async () => {
-            const res = await fetch(`https://mobile-resell-wizards-server.vercel.app/user?email=${user?.email}`);
+            const res = await fetch(`https://mobile-resell-wizards-server.vercel.app/user?email=${user?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data
         }
     });
+    const { user, loading } = useContext(AuthContext)
     if (isLoading) {
         return <Loading></Loading>
     }
-
+    if (loading) {
+        return <Loading></Loading>
+    }
     const menuItems = <>
         {
             userData[0]?.type === "buyer" &&

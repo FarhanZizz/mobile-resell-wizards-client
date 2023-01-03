@@ -3,11 +3,15 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import Loading from './Loading';
 
 const AddProduct = () => {
     const navigate = useNavigate();
 
-    const { user } = useContext(AuthContext)
+    const { user, loading } = useContext(AuthContext)
+    if (loading) {
+        return <Loading></Loading>
+    }
     const handleAddProduct = event => {
         event.preventDefault();
         const form = event.target;
@@ -39,7 +43,9 @@ const AddProduct = () => {
         fetch('https://mobile-resell-wizards-server.vercel.app/products', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+
             },
             body: JSON.stringify(product)
         })

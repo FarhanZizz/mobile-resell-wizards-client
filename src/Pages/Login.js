@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { BsGoogle } from 'react-icons/bs';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import useToken from '../hooks/useToken';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -9,6 +10,12 @@ const Login = () => {
     const { login, googleLogin } = useContext(AuthContext);
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+    const [token] = useToken(loginUserEmail);
+
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
 
 
@@ -22,7 +29,7 @@ const Login = () => {
             .then((result) => {
                 form.reset();
                 setError('');
-                navigate(from, { replace: true })
+                setLoginUserEmail(email);
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -54,7 +61,8 @@ const Login = () => {
         fetch(`https://mobile-resell-wizards-server.vercel.app/users`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+
             },
             body: JSON.stringify(user)
         })

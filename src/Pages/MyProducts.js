@@ -5,17 +5,22 @@ import MyProduct from '../Components/MyProduct';
 import Loading from './Loading';
 
 const MyProducts = () => {
-    const { user } = useContext(AuthContext)
-
-
+    const { user, loading } = useContext(AuthContext)
     const { data: myProducts = [], refetch, isLoading } = useQuery({
         queryKey: ['myProducts'],
         queryFn: async () => {
-            const res = await fetch(`https://mobile-resell-wizards-server.vercel.app/products?email=${user?.email}`);
+            const res = await fetch(`https://mobile-resell-wizards-server.vercel.app/products?email=${user?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data
         }
     });
+    if (loading) {
+        return <Loading></Loading>
+    }
     if (isLoading) {
         return <Loading></Loading>
     }

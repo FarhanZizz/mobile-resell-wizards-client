@@ -6,7 +6,12 @@ const MyProduct = ({ myProduct, refetch }) => {
     const { img, name, time, Price, status, _id } = myProduct;
 
     const handleDelete = () => {
-        fetch(`https://mobile-resell-wizards-server.vercel.app/product/delete/${_id}`, { method: 'DELETE' })
+        fetch(`https://mobile-resell-wizards-server.vercel.app/product/delete/${_id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount === 1) {
@@ -16,7 +21,12 @@ const MyProduct = ({ myProduct, refetch }) => {
             })
     }
     const handleAdvertise = () => {
-        fetch(`https://mobile-resell-wizards-server.vercel.app/product/advertise/${_id}`, { method: 'PATCH' })
+        fetch(`https://mobile-resell-wizards-server.vercel.app/product/advertise/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount === 1) {

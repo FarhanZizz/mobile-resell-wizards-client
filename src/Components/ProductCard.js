@@ -2,15 +2,24 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { BsCheckLg } from "react-icons/bs";
+import Loading from '../Pages/Loading';
 
 const ProductCard = ({ product, setProductDetails }) => {
 
     const { name, img, used, seller, orginal_price, time, Price, location, _id, verified } = product;
 
-    const { user } = useContext(AuthContext)
+    const { user, loading } = useContext(AuthContext)
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     const handleReport = (id) => {
-        fetch(`https://mobile-resell-wizards-server.vercel.app/product/report/${id}`, { method: 'PATCH' })
+        fetch(`https://mobile-resell-wizards-server.vercel.app/product/report/${id}`, {
+            method: 'PATCH',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount === 1) {

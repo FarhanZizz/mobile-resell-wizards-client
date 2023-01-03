@@ -9,7 +9,11 @@ const AllSellers = () => {
     const { data: sellers = [], refetch, isLoading } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch(`https://mobile-resell-wizards-server.vercel.app/sellers`);
+            const res = await fetch(`https://mobile-resell-wizards-server.vercel.app/sellers`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data
         }
@@ -18,7 +22,12 @@ const AllSellers = () => {
         return <Loading></Loading>
     }
     const handleDelete = (id) => {
-        fetch(`https://mobile-resell-wizards-server.vercel.app/user/delete/${id}`, { method: 'DELETE' })
+        fetch(`https://mobile-resell-wizards-server.vercel.app/user/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount === 1) {
@@ -28,7 +37,12 @@ const AllSellers = () => {
             })
     }
     const handleVerify = (email) => {
-        fetch(`https://mobile-resell-wizards-server.vercel.app/seller/verify?email=${email}`, { method: 'PATCH' })
+        fetch(`https://mobile-resell-wizards-server.vercel.app/seller/verify?email=${email}`, {
+            method: 'PATCH',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {

@@ -8,7 +8,12 @@ const AllBuyers = () => {
     const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
-            const res = await fetch(`https://mobile-resell-wizards-server.vercel.app/buyers`);
+            const res = await fetch(`https://mobile-resell-wizards-server.vercel.app/buyers`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            }
+            );
             const data = await res.json();
             return data
         }
@@ -17,7 +22,12 @@ const AllBuyers = () => {
         return <Loading></Loading>
     }
     const handleDelete = (id) => {
-        fetch(`https://mobile-resell-wizards-server.vercel.app/user/delete/${id}`, { method: 'DELETE' })
+        fetch(`https://mobile-resell-wizards-server.vercel.app/user/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount === 1) {

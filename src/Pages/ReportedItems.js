@@ -7,7 +7,11 @@ const ReportedItems = () => {
     const { data: reportedItems = [], refetch, isLoading } = useQuery({
         queryKey: ['reportedItems'],
         queryFn: async () => {
-            const res = await fetch(`https://mobile-resell-wizards-server.vercel.app/products/reports`);
+            const res = await fetch(`https://mobile-resell-wizards-server.vercel.app/products/reports`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            });
             const data = await res.json();
             return data
         }

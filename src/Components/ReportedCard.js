@@ -6,7 +6,12 @@ const ReportedCard = ({ reportedItem, refetch }) => {
     const { name, img, used, seller, orginal_price, time, Price, location, _id } = reportedItem;
 
     const handleDelete = () => {
-        fetch(`https://mobile-resell-wizards-server.vercel.app/product/delete/${_id}`, { method: 'DELETE' })
+        fetch(`https://mobile-resell-wizards-server.vercel.app/product/delete/${_id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount === 1) {

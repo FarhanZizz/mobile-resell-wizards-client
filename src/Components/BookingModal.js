@@ -3,10 +3,14 @@ import toast from 'react-hot-toast';
 import axios from 'axios'
 
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import Loading from '../Pages/Loading';
 
 const BookingModal = ({ productDetails, setProductDetails }) => {
 
-    const { user } = useContext(AuthContext)
+    const { user, loading } = useContext(AuthContext)
+    if (loading) {
+        return <Loading></Loading>
+    }
     const handleBooking = event => {
         event.preventDefault();
         const form = event.target;
@@ -19,6 +23,9 @@ const BookingModal = ({ productDetails, setProductDetails }) => {
         const location = form.location.value;
         axios({
             method: 'post',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
             url: 'https://mobile-resell-wizards-server.vercel.app/bookings',
             data: {
                 email,
@@ -44,6 +51,9 @@ const BookingModal = ({ productDetails, setProductDetails }) => {
         axios({
             method: 'post',
             url: 'https://mobile-resell-wizards-server.vercel.app/bookings',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
             data: {
                 firstName: 'Fred',
                 lastName: 'Flintstone'

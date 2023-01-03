@@ -2,12 +2,19 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { BsGoogle } from 'react-icons/bs';
+import useToken from '../hooks/useToken';
 const SignUp = () => {
     const navigate = useNavigate();
     const [error, setError] = useState('');
     const { singUpWithEmailPassword, updateUser, googleLogin } = useContext(AuthContext);
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail);
+
+    if (token) {
+        navigate('/');
+    }
 
     const handleEmailPasswordSignUp = (event) => {
         event.preventDefault();
@@ -69,12 +76,15 @@ const SignUp = () => {
         fetch(`https://mobile-resell-wizards-server.vercel.app/users`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(user)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                setCreatedUserEmail(user.email);
+            })
 
     }
 
