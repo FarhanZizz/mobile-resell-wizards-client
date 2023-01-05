@@ -8,7 +8,7 @@ As a seller, you can advertise your used phones for sale and communicate with in
 
 As an Admin you can delete any buyer, seller, or reported phones as necessary and verify any seller to ensure the safety and security of our users.
 
-This site was built using the following technologies:
+## This site was built using the following technologies:
 
 - [React](https://reactjs.org/) for building the frontend user interface
 - [React Router](https://reactrouter.com/) for handling client-side routing
