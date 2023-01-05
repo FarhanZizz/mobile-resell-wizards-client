@@ -6,7 +6,7 @@ As a buyer, you can browse through a wide selection of used phones and book a me
 
 As a seller, you can advertise your used phones for sale and communicate with interested buyers through our platform. You also have the ability to report any suspicious listings. To ensure the authenticity of the phones being sold on our website, we have implemented a seller verification process. This means that all verified sellers have undergone a thorough background check and have been approved by our team. Every verified seller's listing has a tick besides the seller's name. 
 
-Our website is monitored by an admin team who can delete any buyer, seller, or reported phones as necessary to ensure the safety and security of our users.
+As an admin you can delete any buyer, seller, or reported phones as necessary to ensure the safety and security of our users.
 
 This site was built using the following technologies:
 
