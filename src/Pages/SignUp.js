@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { BsGoogle } from "react-icons/bs";
 import useToken from "../hooks/useToken";
@@ -8,8 +8,6 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const { singUpWithEmailPassword, updateUser, googleLogin } =
     useContext(AuthContext);
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
   const [createdUserEmail, setCreatedUserEmail] = useState("");
   const [token] = useToken(createdUserEmail);
 
