@@ -10,8 +10,8 @@ As an Admin you can delete any buyer, seller, or reported phones as necessary an
 
 Access using the following details:
 
-Email: admin@gmail.com
-Password: adminadmin
+* Email: admin@gmail.com
+* Password: adminadmin
 
 ## This site was built using the following technologies:
 
