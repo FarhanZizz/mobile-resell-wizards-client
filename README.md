@@ -8,6 +8,11 @@ As a seller, you can advertise your used phones for sale and communicate with in
 
 As an Admin you can delete any buyer, seller, or reported phones as necessary and verify any seller to ensure the safety and security of our users.
 
+Access using the following details:
+
+Email: admin@gmail.com
+Password: adminadmin
+
 ## This site was built using the following technologies:
 
 - [React](https://reactjs.org/) for building the frontend user interface
